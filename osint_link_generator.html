@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Osint Link Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Century+Gothic&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Century Gothic", sans-serif;
+      background: #0f0f0f;
+      color: #e0e0e0;
+      max-width: 1000px;
+      margin: 80px auto;
+      padding: 0 20px 60px;
+    }
+    .box {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.05);
+    }
+    h1 {
+      margin: 0;
+      text-align: center;
+      color: #ffffff;
+      font-size: 1.9rem;
+    }
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .tab-button {
+      flex: 1;
+      min-width: 120px;
+      padding: 10px 12px;
+      background: #202020;
+      border: none;
+      border-radius: 10px;
+      color: #e0e0e0;
+      cursor: pointer;
+      font-size: 0.95rem;
+      text-align: center;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .tab-button.active {
+      background: #d9d9d9;
+      color: #000000;
+      transform: translateY(-1px);
+    }
+    .tab-button:hover {
+      background: #3a3a3a;
+    }
+    .tab-content {
+      display: none;
+      margin-top: 10px;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    label {
+      display: block;
+      margin: 10px 0 4px;
+      color: #cfcfcf;
+      font-size: 0.95rem;
+    }
+    input {
+      width: 100%;
+      padding: 9px 10px;
+      border: 1px solid #333333;
+      border-radius: 8px;
+      background: #121212;
+      color: #ffffff;
+      font-size: 0.95rem;
+    }
+    input::placeholder {
+      color: #666666;
+    }
+    button.action {
+      margin-top: 18px;
+      padding: 11px 20px;
+      background: #d9d9d9;
+      color: #000000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.1s;
+    }
+    button.action:hover {
+      background: #bfbfbf;
+      transform: translateY(-1px);
+    }
+    ul {
+      margin-top: 18px;
+      padding-left: 18px;
+    }
+    li {
+      margin: 6px 0;
+      font-size: 0.92rem;
+    }
+    a {
+      color: #4da3ff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .section-title {
+      color: #ffffff;
+      font-size: 1.05rem;
+      margin-top: 12px;
+    }
+    .spacer {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h1>Osint Link Generator</h1>
+</div>
+
+<div class="box">
+  <div class="tabs">
+    <button class="tab-button active" data-tab="ip">Ip</button>
+    <button class="tab-button" data-tab="domain">Domain</button>
+    <button class="tab-button" data-tab="company">Company</button>
+    <button class="tab-button" data-tab="people">People</button>
+    <button class="tab-button" data-tab="geo">Geolocation</button>
+    <button class="tab-button" data-tab="advanced">Osint</button>
+  </div>
+
+  <div id="ip" class="tab-content active">
+    <label>Ip Address</label>
+    <input type="text" id="ipAddress" placeholder="8.8.8.8">
+    <button class="action" id="btnIp">Generate Links</button>
+    <ul id="resultsIp"></ul>
+  </div>
+
+  <div id="domain" class="tab-content">
+    <label>Domain</label>
+    <input type="text" id="domainName" placeholder="example.com">
+    <label>Subdomain</label>
+    <input type="text" id="subdomain" placeholder="portal.example.com">
+    <label>Url</label>
+    <input type="text" id="url" placeholder="https://example.com/login">
+    <button class="action" id="btnDomain">Generate Links</button>
+    <ul id="resultsDomain"></ul>
+  </div>
+
+  <div id="company" class="tab-content">
+    <label>Company Name</label>
+    <input type="text" id="companyName" placeholder="Acme Security Ltd">
+    <label>Vat Number</label>
+    <input type="text" id="companyVat" placeholder="It12345678901">
+    <label>Business Identifier</label>
+    <input type="text" id="companyId" placeholder="Registration Id">
+    <button class="action" id="btnCompany">Generate Links</button>
+    <ul id="resultsCompany"></ul>
+  </div>
+
+  <div id="people" class="tab-content">
+    <label>Full Name</label>
+    <input type="text" id="fullName" placeholder="John Doe">
+    <label>Email Address</label>
+    <input type="text" id="personEmail" placeholder="john.doe@example.com">
+    <label>Username</label>
+    <input type="text" id="username" placeholder="johndoe">
+    <label>Phone Number</label>
+    <input type="text" id="phoneNumber" placeholder="+39 333 1234567">
+    <button class="action" id="btnPeople">Generate Links</button>
+    <ul id="resultsPeople"></ul>
+  </div>
+
+  <div id="geo" class="tab-content">
+    <label>Address</label>
+    <input type="text" id="geoAddress" placeholder="1 Oxford Street, London">
+    <label>Latitude</label>
+    <input type="text" id="latitude" placeholder="51.5154">
+    <label>Longitude</label>
+    <input type="text" id="longitude" placeholder="-0.1410">
+    <button class="action" id="btnGeo">Generate Links</button>
+    <ul id="resultsGeo"></ul>
+  </div>
+
+  <div id="advanced" class="tab-content">
+    <label>Asn</label>
+    <input type="text" id="asn" placeholder="As15169">
+    <label>Ip Range / Cidr</label>
+    <input type="text" id="ipRange" placeholder="192.168.0.0/24">
+    <label>Hash</label>
+    <input type="text" id="hash" placeholder="Paste A Sample Hash">
+    <label>Product / Technology</label>
+    <input type="text" id="product" placeholder="Apache Http Server 2.4.49">
+    <label>Cve Id</label>
+    <input type="text" id="cveId" placeholder="Cve-2021-26855">
+    <button class="action" id="btnAdvanced">Generate Links</button>
+    <ul id="resultsAdvanced"></ul>
+  </div>
+</div>
+
+<script>
+  function addSectionTitle(list, text) {
+    const li = document.createElement("li");
+    li.className = "section-title";
+    li.textContent = text;
+    list.appendChild(li);
+  }
+
+  function addLinks(list, items, value) {
+    items.forEach(site => {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.textContent = site.name;
+      a.href = site.url(value);
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+    const spacer = document.createElement("li");
+    spacer.className = "spacer";
+    spacer.innerHTML = "&nbsp;";
+    list.appendChild(spacer);
+  }
+
+  function generateIp() {
+    const ip = document.getElementById("ipAddress").value.trim();
+    const list = document.getElementById("resultsIp");
+    list.innerHTML = "";
+    if (!ip) return;
+
+    addSectionTitle(list, "Ip Address Tools");
+    addLinks(list, [
+      { name: "Ipvoid", url: q => "https://www.ipvoid.com/ip/" + encodeURIComponent(q) + "/" },
+      { name: "AbuseIp Db", url: q => "https://www.abuseipdb.com/check/" + encodeURIComponent(q) },
+      { name: "Talos Intelligence", url: q => "https://talosintelligence.com/reputation_center/lookup?search=" + encodeURIComponent(q) },
+      { name: "Greynoise", url: q => "https://viz.greynoise.io/ip/" + encodeURIComponent(q) },
+      { name: "Virustotal Ip Report", url: q => "https://www.virustotal.com/gui/ip-address/" + encodeURIComponent(q) + "/details" },
+      { name: "Shodan Ip Search", url: q => "https://www.shodan.io/host/" + encodeURIComponent(q) },
+      { name: "Censys Ip Search", url: q => "https://search.censys.io/hosts/" + encodeURIComponent(q) },
+      { name: "Ibm X Force Ip Report", url: q => "https://exchange.xforce.ibmcloud.com/ip/" + encodeURIComponent(q) },
+      { name: "Bgp Tools", url: q => "https://bgp.tools" }
+    ], ip);
+
+    addSectionTitle(list, "Blacklist And Reputation");
+    addLinks(list, [
+      { name: "Spamhaus Check", url: q => "https://check.spamhaus.org/listed/?search=" + encodeURIComponent(q) },
+      { name: "Multirbl", url: q => "https://multirbl.valli.org/lookup/" + encodeURIComponent(q) + ".html" },
+      { name: "Urlhaus Ip Search", url: q => "https://urlhaus.abuse.ch/browse.php?search=" + encodeURIComponent(q) }
+    ], ip);
+
+    addSectionTitle(list, "Exposure And Attack Surface");
+    addLinks(list, [
+      { name: "Leakix Ip Search", url: q => "https://leakix.net/search?q=" + encodeURIComponent(q) },
+      { name: "Netlas Ip Report", url: q => "https://app.netlas.io/host-report/" + encodeURIComponent(q) },
+      { name: "Onyphe Ip Search", url: q => "https://www.onyphe.io/search/?query=" + encodeURIComponent(q) },
+      { name: "Zoomeye Ip Search", url: q => "https://www.zoomeye.org/searchResult?q=" + encodeURIComponent(q) },
+      { name: "Fofa Ip Search", url: q => "https://fofa.info/result?qbase64=" + btoa("ip=\"" + q + "\"") }
+    ], ip);
+
+    addSectionTitle(list, "Search");
+    addLinks(list, [
+      { name: "Google Search", url: q => "https://www.google.com/search?q=" + encodeURIComponent(q) }
+    ], ip);
+  }
+
+  function generateDomain() {
+    const domain = document.getElementById("domainName").value.trim();
+    const subdomain = document.getElementById("subdomain").value.trim();
+    const url = document.getElementById("url").value.trim();
+    const list = document.getElementById("resultsDomain");
+    list.innerHTML = "";
+    if (!domain && !subdomain && !url) return;
+
+    if (domain) {
+      addSectionTitle(list, "Domain Tools");
+      addLinks(list, [
+        { name: "Otx Alienvault", url: q => "https://otx.alienvault.com/indicator/domain/" + encodeURIComponent(q) },
+        { name: "Urlvoid", url: q => "https://www.urlvoid.com/scan/" + encodeURIComponent(q) + "/" },
+        { name: "Domaintools Whois", url: q => "https://whois.domaintools.com/" + encodeURIComponent(q) },
+        { name: "Virustotal Domain", url: q => "https://www.virustotal.com/gui/domain/" + encodeURIComponent(q) + "/details" },
+        { name: "Securitytrails", url: q => "https://securitytrails.com/domain/" + encodeURIComponent(q) },
+        { name: "Leakix Domain", url: q => "https://leakix.net/domain/" + encodeURIComponent(q) },
+        { name: "Netlas Domain", url: q => "https://app.netlas.io/host/" + encodeURIComponent(q) },
+        { name: "Onyphe Domain Search", url: q => "https://www.onyphe.io/search/?query=" + encodeURIComponent(q) },
+        { name: "Zoomeye Domain Search", url: q => "https://www.zoomeye.org/searchResult?q=" + encodeURIComponent(q) },
+        { name: "Ibm X Force Domain Report", url: q => "https://exchange.xforce.ibmcloud.com/url/" + encodeURIComponent(q) },
+        { name: "Fofa Domain Search", url: q => "https://fofa.info/result?qbase64=" + btoa("domain=\"" + q + "\"") }
+      ], domain);
+
+      addSectionTitle(list, "Dns And Mail Security");
+      addLinks(list, [
+        { name: "Mxtoolbox Dns", url: q => "https://mxtoolbox.com/SuperTool.aspx?action=a:" + encodeURIComponent(q) },
+        { name: "Mxtoolbox Mx", url: q => "https://mxtoolbox.com/SuperTool.aspx?action=mx:" + encodeURIComponent(q) },
+        { name: "Mxtoolbox Spf", url: q => "https://mxtoolbox.com/SuperTool.aspx?action=spf:" + encodeURIComponent(q) },
+        { name: "Mxtoolbox Dmarc", url: q => "https://mxtoolbox.com/SuperTool.aspx?action=dmarc:" + encodeURIComponent(q) },
+        { name: "Viewdns", url: q => "https://viewdns.info/dnsrecord/?domain=" + encodeURIComponent(q) },
+        { name: "Dnsviz", url: q => "https://dnsviz.net/d/" + encodeURIComponent(q) + "/dnssec/" }
+      ], domain);
+
+      addSectionTitle(list, "Blacklist And Malicious Urls");
+      addLinks(list, [
+        { name: "Spamhaus Domain", url: q => "https://check.spamhaus.org/listed/?search=" + encodeURIComponent(q) },
+        { name: "Multirbl", url: q => "https://multirbl.valli.org/lookup/" + encodeURIComponent(q) + ".html" },
+        { name: "Urlhaus Domain Search", url: q => "https://urlhaus.abuse.ch/browse.php?search=" + encodeURIComponent(q) },
+        { name: "Phishtank Search", url: q => "https://www.phishtank.com/search.php?search=" + encodeURIComponent(q) + "&isaphish=All" }
+      ], domain);
+
+      addSectionTitle(list, "Search");
+      addLinks(list, [
+        { name: "Google Search", url: q => "https://www.google.com/search?q=" + encodeURIComponent(q) }
+      ], domain);
+    }
+
+    if (subdomain) {
+      addSectionTitle(list, "Subdomain Tools");
+      addLinks(list, [
+        { name: "Shodan Host", url: q => "https://www.shodan.io/host/" + encodeURIComponent(q) },
+        { name: "Censys Host", url: q => "https://search.censys.io/hosts/" + encodeURIComponent(q) },
+        { name: "Virustotal Subdomain", url: q => "https://www.virustotal.com/gui/domain/" + encodeURIComponent(q) + "/details" },
+        { name: "Leakix Host", url: q => "https://leakix.net/host/" + encodeURIComponent(q) },
+        { name: "Netlas Host", url: q => "https://app.netlas.io/host-report/" + encodeURIComponent(q) },
+        { name: "Google Search", url: q => "https://www.google.com/search?q=" + encodeURIComponent(q) }
+      ], subdomain);
+    }
+
+    if (url) {
+      addSectionTitle(list, "Url Analysis");
+      addLinks(list, [
+        { name: "Virustotal Url", url: q => "https://www.virustotal.com/gui/url/" + btoa(q).replace(/=+$/,"") },
+        { name: "Urlscan", url: q => "https://urlscan.io/search/#" + encodeURIComponent(q) },
+        { name: "Hybrid Analysis", url: q => "https://www.hybrid-analysis.com/search?query=" + encodeURIComponent(q) },
+        { name: "Urlhaus Url Search", url: q => "https://urlhaus.abuse.ch/browse.php?search=" + encodeURIComponent(q) }
+      ], url);
+    }
+  }
+
+  function generateCompany() {
+    const name = document.getElementById("companyName").value.trim();
+    const vat = document.getElementById("companyVat").value.trim();
+    const id = document.getElementById("companyId").value.trim();
+    const list = document.getElementById("resultsCompany");
+    list.innerHTML = "";
+    if (!name && !vat && !id) return;
+
+    if (name) {
+      addSectionTitle(list, "Company Intelligence");
+      addLinks(list, [
+        { name: "Ufficio Camerale (Name Search)", url: q => "https://www.ufficiocamerale.it" },
+        { name: "Google Search", url: q => "https://www.google.com/search?q=" + encodeURIComponent(q) },
+        { name: "Linkedin Companies", url: q => "https://www.linkedin.com/search/results/companies/?keywords=" + encodeURIComponent(q) },
+        { name: "Open Corporates", url: q => "https://opencorporates.com/companies?q=" + encodeURIComponent(q) },
+        { name: "Crunchbase", url: q => "https://www.crunchbase.com/search/organization" + encodeURIComponent(q) }
+      ], name);
+
+      addSectionTitle(list, "Breach And Leak Intelligence");
+      addLinks(list, [
+        { name: "Have I Been Pwned Domain", url: q => "https://haveibeenpwned.com/DomainSearch" },
+        { name: "Dehashed Domain Search", url: q => "https://www.dehashed.com/search?query=" + encodeURIComponent(q) },
+        { name: "Leakix Domain Search", url: q => "https://leakix.net/domain/" + encodeURIComponent(q) }
+      ], name);
+    }
+
+    if (vat) {
+      addSectionTitle(list, "Vat Intelligence");
+      addLinks(list, [
+        { name: "Ufficio Camerale (Name Search)", url: q => "https://www.ufficiocamerale.it" },
+        { name: "Google Search", url: q => "https://www.google.com/search?q=" + encodeURIComponent(q) },
+      ], vat);
+    }
+
+    if (id) {
+      addSectionTitle(list, "Business Id Intelligence");
+      addLinks(list, [
+        { name: "Google Search", url: q => "https://www.google.com/search?q=" + encodeURIComponent(q) }
+      ], id);
+    }
+  }
+
+  function generatePeople() {
+    const fullName = document.getElementById("fullName").value.trim();
+    const email = document.getElementById("personEmail").value.trim();
+    const username = document.getElementById("username").value.trim();
+    const phone = document.getElementById("phoneNumber").value.trim();
+    const list = document.getElementById("resultsPeople");
+    list.innerHTML = "";
+    if (!fullName && !email && !username && !phone) return;
+
+    if (fullName) {
+      addSectionTitle(list, "Name Intelligence");
+      addLinks(list, [
+        { name: "Google Search", url: q => "https://www.google.com/search?q=" + encodeURIComponent('"' + q + '"') },
+        { name: "Linkedin People", url: q => "https://www.linkedin.com/search/results/people/?keywords=" + encodeURIComponent(q) }
+      ], fullName);
+    }
+
+    if (email) {
+      addSectionTitle(list, "Email Intelligence");
+      addLinks(list, [
+        { name: "Google Search", url: q => "https://www.google.com/search?q=" + encodeURIComponent('"' + q + '"') },
+        { name: "Have I Been Pwned", url: q => "https://haveibeenpwned.com/account/" + encodeURIComponent(q) },
+        { name: "Dehashed Email Search", url: q => "https://www.dehashed.com/search?query=" + encodeURIComponent(q) }
+      ], email);
+    }
+
+    if (username) {
+      addSectionTitle(list, "Username Intelligence");
+      addLinks(list, [
+        { name: "Google Search", url: q => "https://www.google.com/search?q=" + encodeURIComponent(q) },
+        { name: "Github", url: q => "https://github.com/" + encodeURIComponent(q) },
+        { name: "Reddit", url: q => "https://www.reddit.com/user/" + encodeURIComponent(q) }
+      ], username);
+    }
+
+    if (phone) {
+      addSectionTitle(list, "Phone Intelligence");
+      addLinks(list, [
+        { name: "Google Search", url: q => "https://www.google.com/search?q=" + encodeURIComponent(q) },
+        { name: "Truecaller", url: q => "https://www.truecaller.com/search/" + encodeURIComponent(q) }
+      ], phone);
+    }
+  }
+
+  function generateGeo() {
+    const address = document.getElementById("geoAddress").value.trim();
+    const lat = document.getElementById("latitude").value.trim();
+    const lon = document.getElementById("longitude").value.trim();
+    const list = document.getElementById("resultsGeo");
+    list.innerHTML = "";
+    if (!address && !lat && !lon) return;
+
+    if (address) {
+      addSectionTitle(list, "Address Intelligence");
+      addLinks(list, [
+        { name: "Google Maps", url: q => "https://www.google.com/maps/search/" + encodeURIComponent(q) },
+        { name: "Openstreetmap", url: q => "https://www.openstreetmap.org/search?query=" + encodeURIComponent(q) },
+        { name: "Google Search", url: q => "https://www.google.com/search?q=" + encodeURIComponent(q) }
+      ], address);
+    }
+
+    if (lat && lon) {
+      const coords = lat + "," + lon;
+      addSectionTitle(list, "Coordinate Intelligence");
+      addLinks(list, [
+        { name: "Google Maps", url: q => "https://www.google.com/maps/search/" + encodeURIComponent(q) },
+        { name: "Openstreetmap", url: q => "https://www.openstreetmap.org/?mlat=" + encodeURIComponent(lat) + "&mlon=" + encodeURIComponent(lon) + "#map=16/" + encodeURIComponent(lat) + "/" + encodeURIComponent(lon) },
+        { name: "Google Search", url: q => "https://www.google.com/search?q=" + encodeURIComponent(q) }
+      ], coords);
+    }
+  }
+
+  function generateAdvanced() {
+    const asn = document.getElementById("asn").value.trim();
+    const range = document.getElementById("ipRange").value.trim();
+    const hash = document.getElementById("hash").value.trim();
+    const product = document.getElementById("product").value.trim();
+    const cve = document.getElementById("cveId").value.trim();
+    const list = document.getElementById("resultsAdvanced");
+    list.innerHTML = "";
+    if (!asn && !range && !hash && !product && !cve) return;
+
+    if (asn) {
+      addSectionTitle(list, "Asn Intelligence");
+      const cleanAsn = asn.replace(/^AS/i, "As").replace(/^As/i, "").trim() || asn.replace(/^AS/i, "").trim();
+      addLinks(list, [
+        { name: "Bgp.he.net", url: q => "https://bgp.he.net/" + encodeURIComponent(q) },
+        { name: "Ripe Stat", url: q => "https://stat.ripe.net/" + encodeURIComponent(q) },
+        { name: "Bgp Tools", url: q => "https://bgp.tools/" },
+        { name: "Censys Asn Search", url: q => "https://search.censys.io/hosts?q=autonomous_system.asn:" + encodeURIComponent(q) },
+        { name: "Shodan Asn Search", url: q => "https://www.shodan.io/search?query=asn:" + encodeURIComponent(q) }
+      ], cleanAsn || asn);
+    }
+
+    if (range) {
+      addSectionTitle(list, "Network Intelligence");
+      addLinks(list, [
+        { name: "Shodan Network Search", url: q => "https://www.shodan.io/search?query=net:" + encodeURIComponent(q) },
+        { name: "Censys Network Search", url: q => "https://search.censys.io/hosts?q=ip:" + encodeURIComponent(q) },
+        { name: "Securitytrails Ip Explorer", url: q => "https://securitytrails.com/list/ip/" + encodeURIComponent(q) },
+        { name: "Leakix Network Search", url: q => "https://leakix.net/search?q=" + encodeURIComponent(q) },
+        { name: "Netlas Network Search", url: q => "https://app.netlas.io/hosts/?q=" + encodeURIComponent(q) },
+        { name: "Onyphe Network Search", url: q => "https://www.onyphe.io/search/?query=" + encodeURIComponent(q) },
+        { name: "Zoomeye Network Search", url: q => "https://www.zoomeye.org/searchResult?q=" + encodeURIComponent(q) },
+        { name: "Fofa Network Search", url: q => "https://fofa.info/result?qbase64=" + btoa("net=\"" + q + "\"") }
+      ], range);
+    }
+
+    if (hash) {
+      addSectionTitle(list, "Hash Intelligence");
+      addLinks(list, [
+        { name: "Virustotal File", url: q => "https://www.virustotal.com/gui/file/" + encodeURIComponent(q) + "/details" },
+        { name: "Hybrid Analysis", url: q => "https://www.hybrid-analysis.com/search?query=" + encodeURIComponent(q) },
+        { name: "Malwarebazaar", url: q => "https://bazaar.abuse.ch/browse.php?search=" + encodeURIComponent(q) },
+        { name: "Ibm X Force Malware Analysis", url: q => "https://exchange.xforce.ibmcloud.com/malware/" + encodeURIComponent(q) },
+        { name: "Google Search", url: q => "https://www.google.com/search?q=" + encodeURIComponent(q) }
+      ], hash);
+    }
+
+    if (product) {
+      addSectionTitle(list, "Product Vulnerability Intelligence");
+      addLinks(list, [
+        { name: "Nvd Product Search", url: q => "https://nvd.nist.gov/vuln/search/results?query=" + encodeURIComponent(q) },
+        { name: "Mitre Cve Search", url: q => "https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=" + encodeURIComponent(q) },
+        { name: "Vulners Search", url: q => "https://vulners.com/search?query=" + encodeURIComponent(q) },
+        { name: "Exploit-db Search", url: q => "https://www.exploit-db.com/search?q=" + encodeURIComponent(q) },
+        { name: "Cve Details Search", url: q => "https://www.cvedetails.com/google-search-results.php?q=" + encodeURIComponent(q) }
+      ], product);
+    }
+
+    if (cve) {
+      addSectionTitle(list, "Cve Intelligence");
+      addLinks(list, [
+        { name: "Nvd Cve", url: q => "https://nvd.nist.gov/vuln/detail/" + encodeURIComponent(q) },
+        { name: "Mitre Cve", url: q => "https://cve.mitre.org/cgi-bin/cvename.cgi?name=" + encodeURIComponent(q) },
+        { name: "Vulners Cve", url: q => "https://vulners.com/search?query=" + encodeURIComponent(q) },
+        { name: "Exploit-db Cve", url: q => "https://www.exploit-db.com/search?cve=" + encodeURIComponent(q) },
+        { name: "Cve Details", url: q => "https://www.cvedetails.com/cve/" + encodeURIComponent(q) }
+      ], cve);
+    }
+  }
+
+  const tabButtons = document.querySelectorAll(".tab-button");
+  const tabContents = document.querySelectorAll(".tab-content");
+
+  tabButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const target = button.getAttribute("data-tab");
+      tabButtons.forEach(b => b.classList.remove("active"));
+      tabContents.forEach(c => c.classList.remove("active"));
+      button.classList.add("active");
+      document.getElementById(target).classList.add("active");
+    });
+  });
+
+  document.getElementById("btnIp").addEventListener("click", generateIp);
+  document.getElementById("btnDomain").addEventListener("click", generateDomain);
+  document.getElementById("btnCompany").addEventListener("click", generateCompany);
+  document.getElementById("btnPeople").addEventListener("click", generatePeople);
+  document.getElementById("btnGeo").addEventListener("click", generateGeo);
+  document.getElementById("btnAdvanced").addEventListener("click", generateAdvanced);
+</script>
+
+</body>
+</html>
