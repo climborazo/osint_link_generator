@@ -1,4 +1,4 @@
-# 🔍 OSINT Link Generator
+# 🔍 Osint Link Generator
 
 <div align="center">
 
@@ -8,7 +8,7 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 
-**A powerful, privacy-focused OSINT enumeration toolkit for rapid intelligence gathering and threat analysis**
+**A powerful, privacy focused Osint enumeration toolkit for rApid intelligence gathering and threat analysis**
 
 [Features](#-features) • [Getting Started](#-getting-started) • [Documentation](#-documentation) • [Contributing](#-contributing)
 
@@ -18,12 +18,12 @@
 
 ## 📋 Overview
 
-**OSINT Link Generator** is a sophisticated, client-side intelligence aggregation tool designed for security researchers, threat analysts, and OSINT practitioners. Built with zero backend dependencies, it generates targeted query URLs across 40+ intelligence platforms, enabling seamless pivoting during investigations.
+**Osint Link Generator** is a sophisticated, client side intelligence aggregation tool designed for security researchers, threat analysts, and Osint practitioners. Built with zero backend dependencies, it generates targeted query Urls across 40+ intelligence platforms, enabling seamless pivoting during investigations.
 
 ### 🎯 Key Characteristics
 
-- **🔒 Privacy-First Architecture**: All processing occurs client-side—no data transmission, no telemetry, no logs
-- **⚡ Zero Latency**: Instant link generation without API rate limits or authentication requirements
+- **🔒 Privacy First Architecture**: All processing occurs client side—no data transmission, no telemetry, no logs
+- **⚡ Zero Latency**: Instant link generation without Api rate limits or authentication requirements
 - **🎨 Optimized UX**: Dark-themed interface with intuitive tab-based navigation
 - **📦 Portable**: Single HTML file—works offline, requires no installation or dependencies
 - **🔧 Extensible**: Modular design allows easy addition of new intelligence sources
@@ -39,21 +39,21 @@
 <td width="50%">
 
 **Network Intelligence**
-- IP reputation & geolocation
-- ASN/BGP path analysis
-- CIDR block enumeration
-- SSL/TLS certificate transparency
+- Ip reputation - geolocation
+- Asn / Bgp path analysis
+- Cidr block enumeration
+- Ssl / Tls certificate transparency
 - Exposure surface mapping
 
 </td>
 <td width="50%">
 
 **Domain Intelligence**
-- WHOIS & DNS enumeration
+- Whois - Dns enumeration
 - Subdomain discovery
-- Mail security (SPF/DMARC/DKIM)
-- Malicious URL detection
-- Historical DNS records
+- Mail security (Spf / Dmarc / Dkim)
+- Malicious Url detection
+- Historical ns records
 
 </td>
 </tr>
@@ -61,10 +61,10 @@
 <td width="50%">
 
 **Threat Intelligence**
-- Vulnerability databases (CVE/NVD)
+- Vulnerability databases (Cve / Nvd)
 - Malware hash analysis
 - Exploit research platforms
-- IoC reputation scoring
+- Ioc reputation scoring
 - Blacklist verification
 
 </td>
@@ -73,7 +73,7 @@
 **Entity Intelligence**
 - Corporate entity lookup
 - Breach/leak databases
-- Social media OSINT
+- Social media Osint
 - Personnel enumeration
 - Geographic reconnaissance
 
@@ -84,34 +84,34 @@
 ### 🛠️ Supported Intelligence Platforms
 
 <details>
-<summary><b>Search Engines & Aggregators</b> (9 platforms)</summary>
+<summary><b>Search Engines - Aggregators</b> (9 platforms)</summary>
 
 - Shodan
 - Censys
-- FOFA
-- ZoomEye
-- LeakIX
+- Fofa
+- Zoom Eye
+- Leak Ix
 - Netlas
 - Onyphe
-- GreyNoise
-- BinaryEdge
+- Grey Noise
+- Binary Edge
 
 </details>
 
 <details>
 <summary><b>Threat Intelligence</b> (12 platforms)</summary>
 
-- VirusTotal
-- IBM X-Force Exchange
-- AlienVault OTX
-- AbuseIPDB
+- Virus Total
+- Ibm X Force Exchange
+- Alien Vault Otx
+- Abuse Ip Db
 - Talos Intelligence
 - Hybrid Analysis
-- MalwareBazaar
-- URLhaus
-- PhishTank
-- IPVoid
-- URLVoid
+- Malware Bazaar
+- Urlhaus
+- Phish Tank
+- Ip Void
+- Url Void
 - Spamhaus
 
 </details>
@@ -119,25 +119,25 @@
 <details>
 <summary><b>Vulnerability Research</b> (5 platforms)</summary>
 
-- NVD (National Vulnerability Database)
-- MITRE CVE
+- Nvd (National Vulnerability Database)
+- Mitre Cve
 - Vulners
-- Exploit-DB
-- CVE Details
+- Exploit Db
+- Cve Details
 
 </details>
 
 <details>
 <summary><b>Infrastructure Analysis</b> (8 platforms)</summary>
 
-- BGP.HE.net
-- RIPE Stat
-- BGP Tools
-- SecurityTrails
-- DomainTools
-- MXToolbox
-- ViewDNS
-- DNSViz
+- Bgp He Net
+- Ripe Stat
+- Bgp Tools
+- Security Trails
+- Domain Tools
+- Mx Toolbox
+- View Dns
+- Dns Viz
 
 </details>
 
@@ -146,15 +146,15 @@
 
 - Have I Been Pwned
 - Dehashed
-- LeakIX
+- Leak Ix
 
 </details>
 
 <details>
 <summary><b>Business & Corporate</b> (4 platforms)</summary>
 
-- OpenCorporates
-- Crunchbase
+- Open Corporates
+- Crunch Base
 - LinkedIn
 - Italian Business Register
 
@@ -167,7 +167,7 @@
 ### Prerequisites
 
 - Modern web browser (Chrome 90+, Firefox 88+, Safari 14+, Edge 90+)
-- JavaScript enabled
+- Javascript enabled
 - Internet connection (for accessing external platforms)
 
 ### Installation
@@ -176,8 +176,8 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/climborazo/osint_link_generator.git
-cd osint_link_generator
+git clone https://github.com/climborazo/Osint_link_generator.git
+cd Osint_link_generator
 
 # Open in browser
 open index.html  # macOS
@@ -196,7 +196,7 @@ python -m http.server 8000
 
 #### Method 3: GitHub Pages
 
-Access directly via: `https://climborazo.github.io/osint_link_generator`
+Access directly via: `https://climborazo.github.io/Osint_link_generator`
 
 ---
 
@@ -204,7 +204,7 @@ Access directly via: `https://climborazo.github.io/osint_link_generator`
 
 ### Tab Reference
 
-#### 1️⃣ **IP Intelligence**
+#### 1️⃣ **Ip Intelligence**
 
 **Input Format**: IPv4 address (e.g., `8.8.8.8`)
 
@@ -225,7 +225,7 @@ Access directly via: `https://climborazo.github.io/osint_link_generator`
 **Input Types**:
 - **Domain**: `example.com`
 - **Subdomain**: `mail.example.com`
-- **URL**: `https://example.com/path`
+- **Url**: `https://example.com/path`
 
 **Domain Analysis**:
 - WHOIS registration data
@@ -240,8 +240,8 @@ Access directly via: `https://climborazo.github.io/osint_link_generator`
 - Certificate transparency
 - Passive DNS databases
 
-**URL Analysis**:
-- Malicious URL detection
+**Url Analysis**:
+- Malicious Url detection
 - Dynamic analysis sandboxing
 - Screenshot capture
 - Redirect chain analysis
@@ -303,7 +303,7 @@ Access directly via: `https://climborazo.github.io/osint_link_generator`
 
 ---
 
-#### 6️⃣ **OSINT Advanced**
+#### 6️⃣ **Osint Advanced**
 
 ##### **ASN Analysis**
 **Input**: `AS15169` or `15169`
@@ -366,7 +366,7 @@ Access directly via: `https://climborazo.github.io/osint_link_generator`
 
 ⚠️ **Important Notes**:
 - Generated links direct to third-party platforms with their own privacy policies
-- Some platforms may require authentication or API keys
+- Some platforms may require authentication or Api keys
 - Rate limiting may apply on external services
 - Always verify sensitive intelligence through multiple sources
 
@@ -379,14 +379,14 @@ Access directly via: `https://climborazo.github.io/osint_link_generator`
 ```
 ┌─────────────────────────────────────┐
 │         User Interface Layer        │
-│    (HTML5 + CSS3 + Vanilla JS)     │
+│    (Html 5 + Css 3 + Vanilla Js)      │
 ├─────────────────────────────────────┤
 │      Input Processing Layer         │
 │  (Validation + Sanitization +       │
-│   Encoding + URL Construction)      │
+│   Encoding + Url Construction)      │
 ├─────────────────────────────────────┤
 │      Link Generation Engine         │
-│   (Template-based URL builder)      │
+│   (Template based Url builder)      │
 └─────────────────────────────────────┘
 ```
 
@@ -394,18 +394,18 @@ Access directly via: `https://climborazo.github.io/osint_link_generator`
 
 - **Modular Design**: Each intelligence category isolated in separate modules
 - **Input Sanitization**: Automatic encoding for special characters and Base64 requirements
-- **Responsive Layout**: Optimized for 1920×1080+ displays
+- **Responsive Layout**: Optimized for 1920×1080 displays
 - **Dark Theme**: Reduced eye strain for extended investigations
 
 ### Browser Compatibility
 
 | Browser | Minimum Version | Status |
 |---------|----------------|--------|
-| Chrome | 90+ | ✅ Fully Supported |
+| Chrome  | 90+ | ✅ Fully Supported |
 | Firefox | 88+ | ✅ Fully Supported |
-| Safari | 14+ | ✅ Fully Supported |
-| Edge | 90+ | ✅ Fully Supported |
-| Opera | 76+ | ✅ Fully Supported |
+| Safari  | 14+ | ✅ Fully Supported |
+| Edge    | 90+ | ✅ Fully Supported |
+| Opera   | 76+ | ✅ Fully Supported |
 
 ---
 
@@ -416,8 +416,8 @@ Contributions are welcome! Please follow these guidelines:
 ### Adding New Intelligence Sources
 
 1. Fork the repository
-2. Add platform URL template to appropriate section
-3. Update README documentation
+2. Add platform Url template to appropriate section
+3. Update Readme documentation
 4. Submit pull request with description
 
 ### Reporting Issues
@@ -436,28 +436,28 @@ Contributions are welcome! Please follow these guidelines:
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the Gnu Gpl Version 3 License - See the [LICENSE](LICENSE) file for details.
 
 ---
 
 ## 🙏 Acknowledgments
 
 - Intelligence platform operators for providing public query interfaces
-- OSINT community for methodology development
+- Osint community for methodology development
 - Security researchers for continuous feedback
 
 ---
 
 ## ⚠️ Disclaimer
 
-This tool is intended for legitimate security research, threat intelligence, and OSINT investigations. Users are responsible for compliance with applicable laws and platform terms of service. The authors assume no liability for misuse.
+This tool is intended for legitimate security research, threat intelligence, and Osint investigations. Users are responsible for compliance with applicable laws and platform terms of service. The authors assume no liability for misuse.
 
 ---
 
+**climborazo**
+
+- GitHub: [@climborazo](https://github.com/climborazo)
+
 <div align="center">
-
-**Made with 🔍 for the OSINT Community**
-
-[⬆ Back to Top](#-osint-link-generator)
 
 </div>
