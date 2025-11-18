@@ -39,21 +39,21 @@
 <td width="50%">
 
 **Network Intelligence**
-- IP reputation & geolocation
-- ASN/BGP path analysis
-- CIDR block enumeration
-- SSL/TLS certificate transparency
+- Ip reputation - geolocation
+- Asn / Bgp path analysis
+- Cidr block enumeration
+- Ssl / Tls certificate transparency
 - Exposure surface mapping
 
 </td>
 <td width="50%">
 
 **Domain Intelligence**
-- WHOIS & DNS enumeration
+- Whois - Dns enumeration
 - Subdomain discovery
-- Mail security (SPF/DMARC/DKIM)
+- Mail security (Spf / Dmarc / Dkim)
 - Malicious Url detection
-- Historical DNS records
+- Historical ns records
 
 </td>
 </tr>
@@ -61,10 +61,10 @@
 <td width="50%">
 
 **Threat Intelligence**
-- Vulnerability databases (CVE/NVD)
+- Vulnerability databases (Cve / Nvd)
 - Malware hash analysis
 - Exploit research platforms
-- IoC reputation scoring
+- Ioc reputation scoring
 - Blacklist verification
 
 </td>
@@ -84,34 +84,34 @@
 ### 🛠️ Supported Intelligence Platforms
 
 <details>
-<summary><b>Search Engines & Aggregators</b> (9 platforms)</summary>
+<summary><b>Search Engines - Aggregators</b> (9 platforms)</summary>
 
 - Shodan
 - Censys
-- FOFA
-- ZoomEye
-- LeakIX
+- Fofa
+- Zoom Eye
+- Leak Ix
 - Netlas
 - Onyphe
-- GreyNoise
-- BinaryEdge
+- Grey Noise
+- Binary Edge
 
 </details>
 
 <details>
 <summary><b>Threat Intelligence</b> (12 platforms)</summary>
 
-- VirusTotal
-- IBM X-Force Exchange
-- AlienVault OTX
-- AbuseIPDB
+- Virus Total
+- Ibm X Force Exchange
+- Alien Vault Otx
+- Abuse Ip Db
 - Talos Intelligence
 - Hybrid Analysis
-- MalwareBazaar
+- Malware Bazaar
 - Urlhaus
-- PhishTank
-- IPVoid
-- UrlVoid
+- Phish Tank
+- Ip Void
+- Url Void
 - Spamhaus
 
 </details>
@@ -119,25 +119,25 @@
 <details>
 <summary><b>Vulnerability Research</b> (5 platforms)</summary>
 
-- NVD (National Vulnerability Database)
-- MITRE CVE
+- Nvd (National Vulnerability Database)
+- Mitre Cve
 - Vulners
-- Exploit-DB
-- CVE Details
+- Exploit Db
+- Cve Details
 
 </details>
 
 <details>
 <summary><b>Infrastructure Analysis</b> (8 platforms)</summary>
 
-- BGP.HE.net
-- RIPE Stat
-- BGP Tools
-- SecurityTrails
-- DomainTools
-- MXToolbox
-- ViewDNS
-- DNSViz
+- Bgp He Net
+- Ripe Stat
+- Bgp Tools
+- Security Trails
+- Domain Tools
+- Mx Toolbox
+- View Dns
+- Dns Viz
 
 </details>
 
@@ -146,15 +146,15 @@
 
 - Have I Been Pwned
 - Dehashed
-- LeakIX
+- Leak Ix
 
 </details>
 
 <details>
 <summary><b>Business & Corporate</b> (4 platforms)</summary>
 
-- OpenCorporates
-- Crunchbase
+- Open Corporates
+- Crunch Base
 - LinkedIn
 - Italian Business Register
 
@@ -167,7 +167,7 @@
 ### Prerequisites
 
 - Modern web browser (Chrome 90+, Firefox 88+, Safari 14+, Edge 90+)
-- JavaScript enabled
+- Javascript enabled
 - Internet connection (for accessing external platforms)
 
 ### Installation
@@ -204,7 +204,7 @@ Access directly via: `https://climborazo.github.io/Osint_link_generator`
 
 ### Tab Reference
 
-#### 1️⃣ **IP Intelligence**
+#### 1️⃣ **Ip Intelligence**
 
 **Input Format**: IPv4 address (e.g., `8.8.8.8`)
 
