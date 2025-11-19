@@ -468,7 +468,7 @@
       addSectionTitle(list, "Asn Intelligence");
       const cleanAsn = asn.replace(/^AS/i, "As").replace(/^As/i, "").trim() || asn.replace(/^AS/i, "").trim();
       addLinks(list, [
-        { name: "Bgp.he.net", url: q => "https://bgp.he.net/" + encodeURIComponent(q) },
+        { name: "Bgp He Net", url: q => "https://bgp.he.net/" + encodeURIComponent(q) },
         { name: "Ripe Stat", url: q => "https://stat.ripe.net/" + encodeURIComponent(q) },
         { name: "Bgp Tools", url: q => "https://bgp.tools/" },
         { name: "Censys Asn Search", url: q => "https://search.censys.io/hosts?q=autonomous_system.asn:" + encodeURIComponent(q) },
@@ -481,7 +481,7 @@
       addLinks(list, [
         { name: "Shodan Network Search", url: q => "https://www.shodan.io/search?query=net:" + encodeURIComponent(q) },
         { name: "Censys Network Search", url: q => "https://search.censys.io/hosts?q=ip:" + encodeURIComponent(q) },
-        { name: "Securitytrails Ip Explorer", url: q => "https://securitytrails.com/list/ip/" + encodeURIComponent(q) },
+        { name: "Security Trails Ip Explorer", url: q => "https://securitytrails.com/list/ip/" + encodeURIComponent(q) },
         { name: "Leakix Network Search", url: q => "https://leakix.net/search?q=" + encodeURIComponent(q) },
         { name: "Netlas Network Search", url: q => "https://app.netlas.io/hosts/?q=" + encodeURIComponent(q) },
         { name: "Onyphe Network Search", url: q => "https://www.onyphe.io/search/?query=" + encodeURIComponent(q) },
@@ -495,7 +495,7 @@
       addLinks(list, [
         { name: "Virustotal File", url: q => "https://www.virustotal.com/gui/file/" + encodeURIComponent(q) + "/details" },
         { name: "Hybrid Analysis", url: q => "https://www.hybrid-analysis.com/search?query=" + encodeURIComponent(q) },
-        { name: "Malwarebazaar", url: q => "https://bazaar.abuse.ch/browse.php?search=" + encodeURIComponent(q) },
+        { name: "Malware Bazaar", url: q => "https://bazaar.abuse.ch/browse.php?search=" + encodeURIComponent(q) },
         { name: "Ibm X Force Malware Analysis", url: q => "https://exchange.xforce.ibmcloud.com/malware/" + encodeURIComponent(q) },
         { name: "Google Search", url: q => "https://www.google.com/search?q=" + encodeURIComponent(q) }
       ], hash);
@@ -507,7 +507,7 @@
         { name: "Nvd Product Search", url: q => "https://nvd.nist.gov/vuln/search/results?query=" + encodeURIComponent(q) },
         { name: "Mitre Cve Search", url: q => "https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=" + encodeURIComponent(q) },
         { name: "Vulners Search", url: q => "https://vulners.com/search?query=" + encodeURIComponent(q) },
-        { name: "Exploit-db Search", url: q => "https://www.exploit-db.com/search?q=" + encodeURIComponent(q) },
+        { name: "Exploit Db Search", url: q => "https://www.exploit-db.com/search?q=" + encodeURIComponent(q) },
         { name: "Cve Details Search", url: q => "https://www.cvedetails.com/google-search-results.php?q=" + encodeURIComponent(q) }
       ], product);
     }
@@ -518,7 +518,7 @@
         { name: "Nvd Cve", url: q => "https://nvd.nist.gov/vuln/detail/" + encodeURIComponent(q) },
         { name: "Mitre Cve", url: q => "https://cve.mitre.org/cgi-bin/cvename.cgi?name=" + encodeURIComponent(q) },
         { name: "Vulners Cve", url: q => "https://vulners.com/search?query=" + encodeURIComponent(q) },
-        { name: "Exploit-db Cve", url: q => "https://www.exploit-db.com/search?cve=" + encodeURIComponent(q) },
+        { name: "Exploit Db Cve", url: q => "https://www.exploit-db.com/search?cve=" + encodeURIComponent(q) },
         { name: "Cve Details", url: q => "https://www.cvedetails.com/cve/" + encodeURIComponent(q) }
       ], cve);
     }
